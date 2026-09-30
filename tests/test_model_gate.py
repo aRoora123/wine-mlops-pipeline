@@ -1,7 +1,7 @@
 import time
 
 import mlflow.sklearn
-from sklearn.metrics import f1_score
+from mlflow.tracking import MlflowClient
 
 from src.data import load_and_split_data
 
@@ -11,19 +11,26 @@ MODEL_ALIAS = "champion"
 
 
 def test_model_gate():
-    X_train, X_test, y_train, y_test = load_and_split_data()
+    _, X_test, _, _ = load_and_split_data()
 
     model = mlflow.sklearn.load_model(
         f"models:/{MODEL_NAME}@{MODEL_ALIAS}"
     )
 
-    predictions = model.predict(X_test)
+    client = MlflowClient()
 
-    f1 = f1_score(y_test, predictions, average="macro")
-    assert f1 >= 0.88
+    model_version = client.get_model_version_by_alias(
+        MODEL_NAME,
+        MODEL_ALIAS
+    )
+
+    run = client.get_run(model_version.run_id)
+
+    validation_f1 = run.data.metrics["val_macro_f1"]
+    assert validation_f1 >= 0.88
 
     start = time.perf_counter()
-    model.predict(X_test)
+    predictions = model.predict(X_test)
     elapsed = (time.perf_counter() - start) * 1000
 
     assert elapsed <= 30

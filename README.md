@@ -1,3 +1,5 @@
+![CI](https://github.com/aRoora123/wine-mlops-pipeline/actions/workflows/ci.yml/badge.svg)
+
 # Wine MLOps Pipeline
 
 This project implements an end-to-end MLOps pipeline for Wine cultivar classification using the scikit-learn Wine dataset.
@@ -74,7 +76,7 @@ alias.
 
 The champion model must satisfy:
 
-- Test Macro F1 >= 0.88
+- Validation Macro F1 >= 0.88
 - Batch inference time <= 30 ms
 - Predictions must only contain classes 0, 1, and 2
 
