@@ -12,7 +12,7 @@ from src.data import load_and_split_data
 
 RANDOM_STATE = 42
 EXPERIMENT_NAME = "Wine-Cultivar-Classification"
-
+# MLflow tracks each model configuration and its validation metrics.
 
 def get_model_configs():
     return [
