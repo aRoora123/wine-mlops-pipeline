@@ -14,6 +14,8 @@ RANDOM_STATE = 42
 EXPERIMENT_NAME = "Wine-Cultivar-Classification"
 
 
+# MLflow tracks each model configuration and its validation metrics.
+
 def get_model_configs():
     return [
         ("random_forest_1",
