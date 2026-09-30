@@ -25,8 +25,5 @@ jobs:
       - name: Lint
         run: make lint
 
-      - name: Train
-        run: make train
-
       - name: Test
         run: make test
