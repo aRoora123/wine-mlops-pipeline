@@ -5,7 +5,7 @@ install:
 lint:
 	flake8 src tests --max-line-length=100
 
-test:
+test: train
 	pytest -v
 
 train:
