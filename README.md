@@ -105,4 +105,10 @@ The workflow:
 
 ## Git Workflow
 
-A feature branch was used to update the README. A merge conflict was intentionally created by modifying the same file on both `main` and the feature branch. The conflict was resolved and the branches were merged successfully.
+A feature branch was used for README development, and a merge conflict was intentionally created and resolved successfully.
+
+A second branch, `conflict-simulation`, was used to simulate a CI configuration conflict. Conflicting Python version changes were made on the main and feature branches, then manually resolved and committed.
+
+The `feature/mlflow-tracking` branch was used to update MLflow tracking documentation. The changes were submitted through Pull Request #1 and merged into `main` after the CI checks passed.
+
+The final Git history contains feature branches, pull request history, merge commits, and conflict-resolution commits.
